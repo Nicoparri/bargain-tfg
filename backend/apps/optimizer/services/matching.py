@@ -204,9 +204,7 @@ def _get_item_candidates(
     if not candidate_products:
         return []
 
-    semantic_intent = select_semantic_intent(
-        item.name, candidate_products, budget=semantic_budget
-    )
+    semantic_intent = select_semantic_intent(item.name, candidate_products, budget=semantic_budget)
 
     if saved_product_id and any(product.id == saved_product_id for product in candidate_products):
         alternative_ids = [

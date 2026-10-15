@@ -22,9 +22,7 @@ class BusinessProfileSerializer(serializers.ModelSerializer):
     rejection_reason = serializers.CharField(read_only=True)
     verification_status = serializers.SerializerMethodField()
     # Coordenadas opcionales para crear la tienda asociada (solo escritura).
-    latitude = serializers.FloatField(
-        write_only=True, required=False, min_value=-90, max_value=90
-    )
+    latitude = serializers.FloatField(write_only=True, required=False, min_value=-90, max_value=90)
     longitude = serializers.FloatField(
         write_only=True, required=False, min_value=-180, max_value=180
     )

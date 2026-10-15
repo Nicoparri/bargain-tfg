@@ -266,13 +266,18 @@ describe("HomeScreen", () => {
     });
   });
 
-  // Test 4: optimizer teaser card renders with "Próximamente" text
-  it('Test 4: HomeScreen optimizer teaser card renders with "Próximamente" text and is not pressable', async () => {
-    const { getByText } = render(<HomeScreen />);
+  // Test 4: el optimizador ya está disponible, así que la Home no muestra la tarjeta
+  // provisional "Próximamente" y sí las acciones rápidas.
+  it("Test 4: HomeScreen renders quick actions and no longer shows the optimizer teaser", async () => {
+    const { getByText, queryByText } = render(<HomeScreen />);
 
     await waitFor(() => {
-      expect(getByText(/Pr[oó]ximamente/i)).toBeTruthy();
+      expect(getByText("Acciones rápidas")).toBeTruthy();
     });
+    for (const label of ["Plantillas", "Productos", "Escanear", "Favoritos"]) {
+      expect(getByText(label)).toBeTruthy();
+    }
+    expect(queryByText(/Pr[oó]ximamente/i)).toBeNull();
   });
 
   // Test 5: pull-to-refresh triggers all data-fetch functions simultaneously

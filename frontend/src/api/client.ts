@@ -267,10 +267,9 @@ apiClient.interceptors.response.use(
       // Al no pasar por el interceptor de unwrap, la respuesta llega con el
       // envelope { success, data: { access, refresh } }; extractRefreshedTokens
       // lo desempaqueta de forma defensiva.
-      const refreshResponse = await refreshAxios.post(
-        "/auth/token/refresh/",
-        { refresh: storedRefresh },
-      );
+      const refreshResponse = await refreshAxios.post("/auth/token/refresh/", {
+        refresh: storedRefresh,
+      });
 
       const { access: newAccessToken, refresh: newRefreshToken } =
         extractRefreshedTokens(refreshResponse.data, storedRefresh);

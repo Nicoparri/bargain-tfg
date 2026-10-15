@@ -68,12 +68,9 @@ class Command(BaseCommand):
 
     def _print_chains(self) -> None:
         self.stdout.write(self.style.MIGRATE_HEADING("Cadenas presentes (StoreChain):"))
-        chains = (
-            StoreChain.objects.annotate(
-                stores_activas=Count("stores", filter=_active_store_filter())
-            )
-            .order_by("name")
-        )
+        chains = StoreChain.objects.annotate(
+            stores_activas=Count("stores", filter=_active_store_filter())
+        ).order_by("name")
         if not chains:
             self.stdout.write("  (ninguna)")
             return
@@ -83,9 +80,7 @@ class Command(BaseCommand):
     def _print_spider_matching(self) -> None:
         self.stdout.write("")
         self.stdout.write(
-            self.style.MIGRATE_HEADING(
-                "Matching por spider (¿persistirá o descartará items?):"
-            )
+            self.style.MIGRATE_HEADING("Matching por spider (¿persistirá o descartará items?):")
         )
         will_write: list[str] = []
         will_drop: list[str] = []
@@ -107,8 +102,7 @@ class Command(BaseCommand):
 
         self.stdout.write("")
         self.stdout.write(
-            f"  Persistirán {len(will_write)}/{len(SPIDER_CHAINS)}: "
-            f"{', '.join(will_write) or '—'}"
+            f"  Persistirán {len(will_write)}/{len(SPIDER_CHAINS)}: {', '.join(will_write) or '—'}"
         )
         if will_drop:
             self.stdout.write(

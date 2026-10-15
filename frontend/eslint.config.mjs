@@ -12,6 +12,8 @@ export default [
       "coverage/",
       "**/*.config.js",
       "**/*.config.ts",
+      // Ficheros de configuración de nginx (no son JavaScript).
+      "**/*.conf",
     ],
   },
   {

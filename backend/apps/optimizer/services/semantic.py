@@ -45,6 +45,7 @@ class SemanticBudget:
 
     disabled: bool = False
 
+
 # Descriptores que suelen cambiar por completo la intencion del producto.
 TRANSFORMED_QUALIFIERS = (
     "rallado",

@@ -340,9 +340,7 @@ class TestProposals:
         assert len(results) == 1
         assert results[0]["name"] == "Galletas comercio abc987"
 
-    def test_business_proposal_materializes_price_with_store(
-        self, business_client, business_user
-    ):
+    def test_business_proposal_materializes_price_with_store(self, business_client, business_user):
         """Si la propuesta incluye tienda y precio, la aprobación crea el Price."""
         from apps.prices.models import Price
         from tests.factories import StoreFactory
@@ -357,6 +355,4 @@ class TestProposals:
 
         response = business_client.post("/api/v1/products/proposals/", payload)
         assert response.status_code == status.HTTP_201_CREATED
-        assert Price.objects.filter(
-            store=store, source=Price.Source.CROWDSOURCING
-        ).exists()
+        assert Price.objects.filter(store=store, source=Price.Source.CROWDSOURCING).exists()

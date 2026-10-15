@@ -22,9 +22,7 @@ FICTIONAL_SLUGS = [
 
 stores = Store.objects.filter(chain__slug__in=FICTIONAL_SLUGS, is_active=True)
 n_stores = stores.count()
-agg = list(
-    Price.objects.filter(store__in=stores).values("store_id").annotate(n=Count("id"))
-)
+agg = list(Price.objects.filter(store__in=stores).values("store_id").annotate(n=Count("id")))
 counts = [a["n"] for a in agg] or [0]
 total = sum(counts)
 media = Price.objects.filter(store__in=stores).aggregate(a=Avg("price"))["a"]

@@ -24,7 +24,13 @@ export interface OCRScanResponse {
 
 export const scanImage = async (imageUri: string) => {
   const formData = new FormData();
-  await appendImageToFormData(formData, "image", imageUri, "scan.jpg", "image/jpeg");
+  await appendImageToFormData(
+    formData,
+    "image",
+    imageUri,
+    "scan.jpg",
+    "image/jpeg",
+  );
 
   // No fijar "Content-Type: multipart/form-data" a mano: sin el parámetro
   // boundary el backend no puede trocear el body (DRF responde "La
