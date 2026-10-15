@@ -607,7 +607,7 @@ const LandingPage: React.FC = () => {
           </div>
           <div className="flex flex-wrap items-center gap-5">
             <a
-              href="https://github.com/QHX0329/bargain-tfg"
+              href="https://github.com/Nicoparri/bargain-tfg"
               target="_blank"
               rel="noreferrer noopener"
               className="inline-flex items-center gap-2 transition hover:text-emerald-300"

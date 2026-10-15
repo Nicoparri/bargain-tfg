@@ -14,7 +14,7 @@ $svc = ($svcs | Where-Object { $_.service.name -eq 'bargain-free-api' }).service
 if (-not $svc) { Write-Host 'ERROR: servicio bargain-free-api no encontrado'; Stop-Transcript; Read-Host 'Enter'; exit 1 }
 Write-Host ("Servicio: " + $svc.id + " | " + $svc.serviceDetails.url)
 
-$cors = 'https://qhx0329.github.io,http://localhost:5173,http://localhost:3000,http://localhost:8081,http://127.0.0.1:8081'
+$cors = 'https://nicoparri.github.io,http://localhost:5173,http://localhost:3000,http://localhost:8081,http://127.0.0.1:8081'
 $body = @{ value = $cors } | ConvertTo-Json
 try {
     Invoke-RestMethod -Method Put -Uri ("https://api.render.com/v1/services/" + $svc.id + "/env-vars/CORS_ALLOWED_ORIGINS") -Headers $h -Body $body -TimeoutSec 30 | Out-Null

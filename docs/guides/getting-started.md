@@ -12,7 +12,7 @@ Optional (Windows host-only GIS tooling):
 ## Installation Steps
 1. Clone and enter the repository:
 ```bash
-git clone https://github.com/QHX0329/bargain-tfg.git
+git clone https://github.com/Nicoparri/bargain-tfg.git
 cd bargain-tfg
 ```
 2. Create environment file:

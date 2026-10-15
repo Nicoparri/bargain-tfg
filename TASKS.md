@@ -5,8 +5,8 @@
 >
 > **Notion Backlog:** https://www.notion.so/234f4ce235f74bf388c3892e44bd5667
 > **Notion Página principal:** https://www.notion.so/31e6a05f573681c496a6d24e99290150
-> **GitHub Repo:** https://github.com/QHX0329/bargain-tfg
-> **GitHub Issues:** https://github.com/QHX0329/bargain-tfg/issues
+> **GitHub Repo:** https://github.com/Nicoparri/bargain-tfg
+> **GitHub Issues:** https://github.com/Nicoparri/bargain-tfg/issues
 >
 > Última sincronización: 2026-06-11 (cierre total: F1–F7 al 100 %, CLAUDE.md actualizado, sincronizado con GitHub y Notion)
 

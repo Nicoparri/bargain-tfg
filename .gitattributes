@@ -1,0 +1,11 @@
+# Estadísticas de lenguajes de GitHub (Linguist):
+# la memoria LaTeX, las notas y la documentación no son código de la aplicación,
+# así que se excluyen para que el repositorio refleje su stack real
+# (Python/Django + TypeScript/React Native).
+memoriaTFG/** linguist-documentation
+Obsidian-TFG/** linguist-documentation
+docs/** linguist-documentation
+.planning/** linguist-documentation
+memory/** linguist-documentation
+*.tex linguist-documentation
+dashboard.html linguist-generated

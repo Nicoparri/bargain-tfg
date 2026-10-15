@@ -1,12 +1,15 @@
 name: CD Render Staging
 
+# Despliegue automático DESACTIVADO mientras el servicio de staging de Render
+# esté suspendido (cualquier push a backend/** acabaría en un deploy fallido).
+# Para reactivarlo, restaura el disparador por push:
+#   push:
+#     branches: [main]
+#     paths:
+#       - 'backend/**'
+#       - 'render.free.yaml'
+#       - '.github/workflows/cd-render-staging.yml'
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'backend/**'
-      - 'render.free.yaml'
-      - '.github/workflows/cd-render-staging.yml'
   workflow_dispatch:
 
 concurrency:
@@ -26,7 +29,7 @@ jobs:
       RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
       RENDER_WEB_SERVICE_ID: ${{ secrets.RENDER_WEB_SERVICE_ID }}
       RENDER_STAGING_HEALTHCHECK_URL: ${{ secrets.RENDER_STAGING_HEALTHCHECK_URL }}
-      RENDER_SYNC_CORS_ALLOWED_ORIGINS: https://qhx0329.github.io,http://localhost:3000,http://localhost:5173,http://127.0.0.1:5173,http://localhost:8081,exp://localhost:8081
+      RENDER_SYNC_CORS_ALLOWED_ORIGINS: https://nicoparri.github.io,http://localhost:3000,http://localhost:5173,http://127.0.0.1:5173,http://localhost:8081,exp://localhost:8081
 
     steps:
       - name: Validate required secrets

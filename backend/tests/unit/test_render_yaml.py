@@ -115,7 +115,7 @@ def test_render_yaml_web_cors_origins_include_github_pages(render_config):
     )
 
     origins = [origin.strip() for origin in raw_value.split(",") if origin.strip()]
-    assert "https://qhx0329.github.io" in origins
+    assert "https://nicoparri.github.io" in origins
 
 
 def test_worker_services_do_not_use_free_plan(render_config):

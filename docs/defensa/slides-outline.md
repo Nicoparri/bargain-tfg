@@ -145,7 +145,7 @@ Slides estimadas: ~20 diapositivas
 ### BLOQUE 7: Cierre (2 slides) — 23-25 min
 
 **Slide 19 — Información del repositorio**
-- GitHub: https://github.com/QHX0329/bargain-tfg
+- GitHub: https://github.com/Nicoparri/bargain-tfg
 - Stack visual (badges/logos: Python, Django, React Native, PostgreSQL, Docker)
 - QR code del repo
 

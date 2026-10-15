@@ -20,10 +20,12 @@ name: Scrape Prices
 #     Name:  RENDER_DATABASE_URL
 #     Value: la "External Database URL" de tu Postgres de Render.
 
+# Ejecución programada DESACTIVADA: la base de datos de staging en Render ya no
+# está activa y cada ejecución acababa cancelada por timeout. Para reactivarla,
+# vuelve a añadir el bloque `schedule` cuando el backend esté de nuevo en línea:
+#   schedule:
+#     - cron: '0 6,18 * * *'   # Dos veces al día (UTC); los precios caducan a las 48 h
 on:
-  schedule:
-    # Dos veces al día (UTC). Los precios de scraping caducan a las 48 h.
-    - cron: '0 6,18 * * *'
   workflow_dispatch: {}
 
 concurrency:

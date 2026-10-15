@@ -14,11 +14,11 @@ name: Keep Backend Alive
 #     repo es privado, usa mejor un pinger externo gratuito (cron-job.org o
 #     UptimeRobot) apuntando a la misma URL, o sube el intervalo a */14.
 
+# Ejecución programada DESACTIVADA mientras el servicio de staging de Render
+# esté suspendido (cada ping fallaría). Para reactivarla, restaura:
+#   schedule:
+#     - cron: '*/10 * * * *'   # margen frente a los 15 min de inactividad de Render
 on:
-  schedule:
-    # Cada 10 minutos. (GitHub puede retrasar los cron unos minutos; 10 deja
-    # margen frente al límite de 15 min de inactividad de Render.)
-    - cron: '*/10 * * * *'
   workflow_dispatch: {}
 
 # Evita solapamientos si una ejecución se retrasa.

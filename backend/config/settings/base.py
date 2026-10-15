@@ -208,7 +208,7 @@ _default_cors_origins = (
     "http://localhost:3000,"
     "http://localhost:5173,"
     "http://127.0.0.1:5173,"
-    "https://qhx0329.github.io,"
+    "https://nicoparri.github.io,"
     "http://localhost:8081,"
     "exp://localhost:8081"
 )
@@ -227,7 +227,7 @@ CORS_ALLOWED_ORIGINS = [
 # bloquea TODA la app por CORS (el navegador rechaza cada llamada a la API).
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https://bargain-[a-z0-9-]+\.onrender\.com$",  # bargain-app, etc. en Render
-    r"^https://qhx0329\.github\.io$",  # portal PYME en GitHub Pages
+    r"^https://nicoparri\.github\.io$",  # portal PYME en GitHub Pages
 ]
 
 # ── Celery ───────────────────────────────────────────

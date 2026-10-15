@@ -51,6 +51,15 @@ jobs:
           cd frontend/web
           npm run build
 
+      # Publica también los mockups de UI (docs/diagramas/ui-mockups) en
+      # https://nicoparri.github.io/bargain-tfg/mockups/ para enlazarlos desde el README.
+      - name: Add UI mockups
+        run: |
+          test -f docs/diagramas/ui-mockups/index.html
+          mkdir -p frontend/web/dist/mockups
+          cp -R docs/diagramas/ui-mockups/. frontend/web/dist/mockups/
+          rm -f frontend/web/dist/mockups/README.md
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

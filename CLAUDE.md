@@ -15,7 +15,7 @@
 - **TFG BarGAIN v1.0 COMPLETADO** ✅ — fases F1–F7 cerradas (325 h)
 - **Despliegue público operativo:**
   - Backend + PostgreSQL/PostGIS + Redis: Render free tier (`render.free.yaml`) → `https://bargain-free-api.onrender.com`
-  - Portal PYME (web estática): GitHub Pages → `https://qhx0329.github.io/bargain-tfg/`
+  - Portal PYME (web estática): GitHub Pages → `https://nicoparri.github.io/bargain-tfg/`
   - App de usuario: Expo web en local o IPA sin firmar para iPhone (workflow `ios-build.yml` + Sideloadly)
   - Datos demo: `python manage.py seed_demo` + `python manage.py seed_sevilla` (idempotentes, se ejecutan en cada arranque del servicio de Render; seed_sevilla crea 7 cadenas ficticias, 50 tiendas por Sevilla y ~55.000 precios estilo Mercadona, ≥1.000 por tienda)
 - **Memoria:** compilada y completa (`memoriaTFG/Plantilla TfG/proyect-final.pdf`, generada con `scripts/win/compilar-memoria.bat` — MiKTeX local)
@@ -291,7 +291,7 @@ cd frontend && npx prettier --check "src/**/*.{ts,tsx}"
 | [`docs/ai-mistakes-log.md`](docs/ai-mistakes-log.md) | Errores cometidos por agentes IA y sus soluciones | Cuando se cometa un error, antes de corregirlo |
 
 **Notion Backlog:** https://www.notion.so/234f4ce235f74bf388c3892e44bd5667
-**GitHub Issues:** https://github.com/QHX0329/bargain-tfg/issues
+**GitHub Issues:** https://github.com/Nicoparri/bargain-tfg/issues
 
 ### Protocolo obligatorio para todos los agentes IA
 

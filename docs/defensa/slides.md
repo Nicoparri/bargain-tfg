@@ -175,7 +175,7 @@ Flujo demostrado:
 
 # ¿Preguntas?
 
-**GitHub:** `github.com/QHX0329/bargain-tfg`
+**GitHub:** `github.com/Nicoparri/bargain-tfg`
 
 Stack: Python 3.12 · Django 5 · React Native · Expo · PostgreSQL+PostGIS · Celery · Docker
 

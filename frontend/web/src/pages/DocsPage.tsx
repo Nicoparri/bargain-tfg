@@ -30,7 +30,7 @@ type DocItem = {
 
 const withBase = (path: string): string => `${import.meta.env.BASE_URL}${path}`;
 
-const REPO_BLOB_BASE = 'https://github.com/QHX0329/bargain-tfg/blob/main/';
+const REPO_BLOB_BASE = 'https://github.com/Nicoparri/bargain-tfg/blob/main/';
 
 const overviewCards: OverviewCard[] = [
   {
@@ -143,7 +143,7 @@ const DocsPage: React.FC = () => {
             <a href={withBase('login')} className="transition hover:text-emerald-300">Login</a>
           </nav>
           <a
-            href="https://github.com/QHX0329/bargain-tfg"
+            href="https://github.com/Nicoparri/bargain-tfg"
             className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-400 to-emerald-500 px-4 py-2 text-sm font-semibold text-emerald-950"
           >
             Ver repositorio <ArrowRight className="h-4 w-4" />
@@ -163,7 +163,7 @@ const DocsPage: React.FC = () => {
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <a
-              href="https://github.com/QHX0329/bargain-tfg/tree/main/docs"
+              href="https://github.com/Nicoparri/bargain-tfg/tree/main/docs"
               className="inline-flex items-center gap-2 rounded-2xl bg-emerald-300 px-6 py-3 text-sm font-semibold text-emerald-950"
             >
               Abrir documentacion completa <ArrowRight className="h-4 w-4" />
@@ -197,7 +197,7 @@ const DocsPage: React.FC = () => {
                 <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white">Bloques de documentacion</h2>
               </div>
               <a
-                href="https://github.com/QHX0329/bargain-tfg/tree/main/docs"
+                href="https://github.com/Nicoparri/bargain-tfg/tree/main/docs"
                 className="text-sm font-semibold text-emerald-300 hover:text-emerald-200"
               >
                 Ver carpeta docs completa

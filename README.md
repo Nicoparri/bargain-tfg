@@ -7,35 +7,34 @@
 
 # **BarGAIN** — Compra inteligente, al mejor precio y en el menor tiempo.
 
-[![CI Backend](https://github.com/QHX0329/bargain-tfg/actions/workflows/ci-backend.yml/badge.svg?branch=main)](https://github.com/QHX0329/bargain-tfg/actions/workflows/ci-backend.yml)
-[![CI Frontend](https://github.com/QHX0329/bargain-tfg/actions/workflows/ci-frontend.yml/badge.svg?branch=main)](https://github.com/QHX0329/bargain-tfg/actions/workflows/ci-frontend.yml)
-[![CD Render Staging](https://github.com/QHX0329/bargain-tfg/actions/workflows/cd-render-staging.yml/badge.svg?branch=main)](https://github.com/QHX0329/bargain-tfg/actions/workflows/cd-render-staging.yml)
-[![Deploy GitHub Pages](https://github.com/QHX0329/bargain-tfg/actions/workflows/deploy-web-gh-pages.yml/badge.svg?branch=main)](https://github.com/QHX0329/bargain-tfg/actions/workflows/deploy-web-gh-pages.yml)
+[![CI Backend](https://github.com/Nicoparri/bargain-tfg/actions/workflows/ci-backend.yml/badge.svg?branch=main)](https://github.com/Nicoparri/bargain-tfg/actions/workflows/ci-backend.yml)
+[![CI Frontend](https://github.com/Nicoparri/bargain-tfg/actions/workflows/ci-frontend.yml/badge.svg?branch=main)](https://github.com/Nicoparri/bargain-tfg/actions/workflows/ci-frontend.yml)
+[![Deploy GitHub Pages](https://github.com/Nicoparri/bargain-tfg/actions/workflows/deploy-web-gh-pages.yml/badge.svg?branch=main)](https://github.com/Nicoparri/bargain-tfg/actions/workflows/deploy-web-gh-pages.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## 📋 Descripción
 
 BarGAIN es una aplicación móvil y web que elimina la ineficiencia en la compra diaria. No solo indica dónde es más barato un producto, sino que calcula la **combinación óptima de supermercados** que ofrece la mejor relación **Precio–Distancia–Tiempo**.
 
-Este proyecto es un **Trabajo Fin de Grado** del Grado en Ingeniería Informática — Ingeniería del Software, Universidad de Sevilla (ETSII).
+Este proyecto es el **Trabajo Fin de Grado** de Nicolás Parrilla Geniz (Grado en Ingeniería Informática — Ingeniería del Software, Universidad de Sevilla), **calificado con 9,1** y desarrollado en solitario.
+
+**De un vistazo:** API REST con Django 5 + PostGIS · app React Native (Expo) + portal web React · optimizador de rutas con OR-Tools · OCR y asistente LLM · 11 spiders de scraping · **444 tests automatizados** (cobertura backend ≥ 80 % bloqueante en CI) · CI/CD con GitHub Actions · 11 ADRs.
 
 ## 🌐 Demo pública
 
 | Componente | URL | Notas |
 |---|---|---|
-| Portal Business (PYMEs) | <https://qhx0329.github.io/bargain-tfg/> | Web estática en GitHub Pages |
-| API backend (staging) | <https://bargain-free-api.onrender.com/api/v1/health/> | Render free tier: la primera petición tras inactividad tarda 30–60 s (cold start) |
-| Dashboard del proyecto | <https://qhx0329.github.io/bargain-tfg/dashboard.html> | Estado de fases y tareas |
-| Mockups de UI | <https://qhx0329.github.io/bargain-tfg/docs/diagramas/ui-mockups/index.html> | Diseños previos al desarrollo |
+| Portal Business (PYMEs) | <https://nicoparri.github.io/bargain-tfg/> | Web estática en GitHub Pages |
+| Mockups de UI | <https://nicoparri.github.io/bargain-tfg/mockups/> | Diseños previos al desarrollo |
+| Memoria del TFG | [`proyect-final.pdf`](memoriaTFG/Plantilla%20TfG/proyect-final.pdf) | 86 páginas: requisitos, arquitectura, pruebas y manual de usuario |
+
+> **Nota:** el backend de staging (Render, plan gratuito) está **apagado** tras la defensa del TFG, por lo que el portal muestra la landing pero las acciones que llaman a la API no responderán. Todo el sistema se levanta en local con Docker en pocos minutos (ver [Inicio rápido](#-inicio-rápido)).
 
 La app de usuario (iOS/web) se ejecuta con Expo en local (`make frontend`) o se instala en iPhone con la IPA del workflow **iOS Build** (vía Sideloadly); instrucciones completas en el capítulo 7 de la memoria.
 
-## 📌 Estado Actual (2026-06-12)
+## 📌 Estado
 
-**v1.0 completada** ✅ — Las 7 fases (F1–F7) están cerradas (325 h), el sistema está desplegado en staging y la memoria del TFG está compilada y entregable.
-
-- Backend + PostgreSQL/PostGIS + Redis en Render · Portal PYME en GitHub Pages · IPA iOS por CI.
-- Memoria: [`memoriaTFG/Plantilla TfG/proyect-final.pdf`](memoriaTFG/Plantilla%20TfG/proyect-final.pdf) (86 páginas, con bibliografía y apéndices).
+**v1.0 completada** ✅ — Las 7 fases (F1–F7) están cerradas (325 h) y el TFG fue defendido con una calificación de 9,1. El staging público de Render está apagado; los workflows programados de scraping y *keep-alive* están desactivados hasta que vuelva a estar en línea.
 
 ## 🎯 El Problema
 
@@ -83,11 +82,24 @@ BarGAIN actúa como un **orquestador inteligente de la cesta de la compra** medi
 |---|---|
 | `ci-backend.yml` | Ruff (lint + format) y pytest con cobertura bloqueante en cada push |
 | `ci-frontend.yml` | ESLint, Prettier y Jest en cada push |
-| `cd-render-staging.yml` | Despliegue a Render en push a `main` con cambios en `backend/**` (secrets `RENDER_*`) |
-| `deploy-web-gh-pages.yml` | Build de Vite y publicación del portal en GitHub Pages |
+| `cd-render-staging.yml` | Despliegue a Render (secrets `RENDER_*`); manual mientras el staging esté apagado |
+| `deploy-web-gh-pages.yml` | Build de Vite y publicación del portal y los mockups en GitHub Pages |
 | `ios-build.yml` | IPA sin firmar (`BarGAIN-unsigned`) en runner macOS, instalable con Sideloadly |
 
 El flujo de CD valida los secretos, despliega web/worker/beat vía API de Render, espera el estado `live` y ejecuta un smoke test contra el endpoint de salud.
+
+## 🤖 Cómo se desarrolló: ingeniería de software con agentes de IA
+
+BarGAIN se construyó en solitario usando agentes de IA (Claude Code, Codex, Gemini y GitHub Copilot) como parte del equipo, pero bajo un proceso de ingeniería explícito: las decisiones, el diseño y la revisión del código son del autor, y cada cambio pasa por los mismos tests y linters de CI.
+
+| Pieza del proceso | Dónde está | Para qué sirve |
+|---|---|---|
+| Instrucciones para agentes | [`CLAUDE.md`](CLAUDE.md), `.github/instructions/`, `.github/prompts/` | Arquitectura, convenciones y reglas que todo agente debe seguir |
+| Planificación por fases | [`.planning/`](.planning/) · [`TASKS.md`](TASKS.md) | Roadmap, requisitos y estado vivo de cada tarea (método GSD) |
+| Decisiones de arquitectura | [`docs/decisiones/`](docs/decisiones/) | 11 ADRs que justifican cada elección técnica |
+| Registro de errores de la IA | [`docs/ai-mistakes-log.md`](docs/ai-mistakes-log.md) | Fallos detectados en el código generado y reglas derivadas para no repetirlos |
+| Plantillas de prompts | [`docs/ai-prompts/`](docs/ai-prompts/) | Flujos reutilizables para empezar, revisar y cerrar tareas |
+| Barreras de calidad | `.github/workflows/` | Lint, tests y cobertura ≥ 80 % bloqueantes en cada push |
 
 ## 🗺️ Roadmap (cerrado)
 
@@ -116,7 +128,7 @@ Notas importantes:
 
 ```bash
 # Clonar repositorio
-git clone https://github.com/QHX0329/bargain-tfg.git
+git clone https://github.com/Nicoparri/bargain-tfg.git
 cd bargain-tfg
 
 # Copiar variables de entorno (rellenar antes de continuar)
@@ -177,7 +189,7 @@ bargain-tfg/
 ├── docs/            # Documentación, ADRs, diagramas y fuentes de la memoria
 ├── memoriaTFG/      # Memoria LaTeX compilada (proyect-final.pdf)
 ├── scripts/         # Automatización (capturas, compilación, despliegue)
-├── .github/         # 5 workflows de CI/CD y plantillas
+├── .github/         # Workflows de CI/CD, plantillas e instrucciones para agentes
 ├── render.yaml      # Blueprint Render (servicios separados)
 └── render.free.yaml # Blueprint free tier usado en staging
 ```
@@ -209,7 +221,7 @@ Este proyecto está bajo la licencia MIT. Ver [LICENSE](LICENSE) para más detal
 
 ## 👤 Autor
 
-- **Nicolás Parrilla Geniz** — Estudiante de Ingeniería Informática, Universidad de Sevilla
+- **Nicolás Parrilla Geniz** — Graduado en Ingeniería del Software, Universidad de Sevilla · [LinkedIn](https://www.linkedin.com/in/nicpargen) · [GitHub](https://github.com/Nicoparri)
 - Tutor: **Juan Vicente Gutiérrez Santacreu**
 
 ---
