@@ -92,6 +92,24 @@ El flujo de CD valida los secretos, despliega web/worker/beat vía API de Render
 
 BarGAIN se construyó en solitario usando agentes de IA (Claude Code, Codex, Gemini y GitHub Copilot) como parte del equipo, pero bajo un proceso de ingeniería explícito: las decisiones, el diseño y la revisión del código son del autor, y cada cambio pasa por los mismos tests y linters de CI.
 
+### Flujo GSD: desarrollo guiado por especificaciones
+
+Todo el ciclo de vida se gobernó con [GSD](https://github.com/open-gsd/gsd-core), un framework open source de *context engineering* y desarrollo guiado por especificaciones (*spec-driven development*) para agentes de IA. Su objetivo es evitar la degradación del contexto (*context rot*): el trabajo se divide en fases y tareas atómicas que se ejecutan en instancias nuevas del agente, y la información viaja entre sesiones en ficheros versionados, no en el historial de la conversación.
+
+Cada fase recorre el mismo ciclo y cada paso deja un artefacto escrito que es la fuente de verdad del siguiente:
+
+| Paso | Qué se hace | Artefacto |
+|---|---|---|
+| Discutir | Fijar decisiones y supuestos antes de planificar | `CONTEXT.md` |
+| Planificar | Investigar y dividir la fase en tareas con criterios de aceptación | `RESEARCH.md`, `PLAN.md` |
+| Ejecutar | Implementar con commits atómicos y registrar desviaciones | `SUMMARY.md` |
+| Verificar | Comprobar requisitos y validación funcional (UAT) | `VERIFICATION.md`, `UAT.md` |
+| Cerrar hito | Auditar que todos los requisitos se entregaron | `MILESTONE-AUDIT.md` |
+
+Quien planifica, quien implementa y quien verifica son instancias distintas del agente, de modo que la revisión no hereda la confianza del código recién escrito. Mi papel fue el de **gestor y verificador**: definir el alcance y los criterios de aceptación, dirigir a los agentes y revisar y validar cada entrega antes de aceptarla.
+
+Evidencias en el repositorio: 12 fases en [`.planning/phases/`](.planning/phases/) con 38 pares `PLAN`/`SUMMARY`, investigación, validación, verificación y UAT por fase; mapa del código en `.planning/codebase/`; base de conocimiento de incidencias en `.planning/debug/`; y la auditoría del hito v1.0. La memoria del TFG lo explica en el capítulo *Análisis temporal y costes de desarrollo*.
+
 | Pieza del proceso | Dónde está | Para qué sirve |
 |---|---|---|
 | Instrucciones para agentes | [`CLAUDE.md`](CLAUDE.md), `.github/instructions/`, `.github/prompts/` | Arquitectura, convenciones y reglas que todo agente debe seguir |
