@@ -18,7 +18,7 @@ BarGAIN es una aplicación móvil y web que elimina la ineficiencia en la compra
 
 Este proyecto es el **Trabajo Fin de Grado** de Nicolás Parrilla Geniz (Grado en Ingeniería Informática — Ingeniería del Software, Universidad de Sevilla), **calificado con 9,1** y desarrollado en solitario.
 
-**De un vistazo:** API REST con Django 5 + PostGIS · app React Native (Expo) + portal web React · optimizador de rutas con OR-Tools · OCR y asistente LLM · 11 spiders de scraping · **444 tests automatizados** (cobertura backend ≥ 80 % bloqueante en CI) · CI/CD con GitHub Actions · 11 ADRs.
+**De un vistazo:** API REST con Django 5 + PostGIS · app React Native (Expo) + portal web React · optimizador de rutas con OR-Tools · OCR y asistente LLM · 11 spiders de scraping · **más de 490 tests automatizados** (cobertura backend ≥ 80 % bloqueante en CI) · CI/CD con GitHub Actions · 11 ADRs.
 
 ## 🌐 Demo pública
 
@@ -71,8 +71,8 @@ BarGAIN actúa como un **orquestador inteligente de la cesta de la compra** medi
 
 ## 🧪 Calidad verificada
 
-- **333 tests backend** (162 unitarios + 171 de integración) con cobertura **≥ 80 % bloqueante en CI** (`--cov-fail-under=80`).
-- **111 tests frontend** (Jest + React Native Testing Library, 15 suites).
+- **375 tests backend** (unitarios + integración contra PostgreSQL/PostGIS) con cobertura **≥ 80 % bloqueante en CI** (`--cov-fail-under=80`).
+- **116 tests frontend** (Jest + React Native Testing Library, 16 suites).
 - **4 flujos E2E** con Playwright (auth, optimizador, OCR, portal business) contra backend real.
 - UAT manual en iPhone para los flujos nativos (GPS, cámara).
 

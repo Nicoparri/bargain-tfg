@@ -333,7 +333,10 @@ class TestProposals:
         payload = {"name": "Galletas comercio abc987", "barcode": "8499999999994"}
         business_client.post("/api/v1/products/proposals/", payload)
 
-        response = api_client.get("/api/v1/products/", {"q": "abc987"})
+        # La búsqueda usa similitud trigram sobre el nombre completo (umbral 0,3):
+        # un token suelto como "abc987" solo alcanza 0,28 frente a este nombre,
+        # así que se busca por el nombre propuesto para verificar la visibilidad.
+        response = api_client.get("/api/v1/products/", {"q": "Galletas comercio abc987"})
         assert response.status_code == status.HTTP_200_OK
         data = response.json()
         results = data.get("results", data.get("data", {}).get("results", []))
