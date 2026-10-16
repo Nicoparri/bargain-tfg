@@ -1,4 +1,3 @@
-<!-- generated-by: gsd-doc-writer -->
 <div align="center">
   <img src="./docs/assets/logo.png" alt="BarGAIN Logo" width="400">
 </div>
@@ -92,9 +91,9 @@ El flujo de CD valida los secretos, despliega web/worker/beat vía API de Render
 
 BarGAIN se construyó en solitario usando agentes de IA (Claude Code, Codex, Gemini y GitHub Copilot) como parte del equipo, pero bajo un proceso de ingeniería explícito: las decisiones, el diseño y la revisión del código son del autor, y cada cambio pasa por los mismos tests y linters de CI.
 
-### Flujo GSD: desarrollo guiado por especificaciones
+### Desarrollo guiado por especificaciones con agentes de IA
 
-Todo el ciclo de vida se gobernó con [GSD](https://github.com/open-gsd/gsd-core), un framework open source de *context engineering* y desarrollo guiado por especificaciones (*spec-driven development*) para agentes de IA. Su objetivo es evitar la degradación del contexto (*context rot*): el trabajo se divide en fases y tareas atómicas que se ejecutan en instancias nuevas del agente, y la información viaja entre sesiones en ficheros versionados, no en el historial de la conversación.
+Todo el ciclo de vida se gobernó con una técnica de desarrollo guiado por especificaciones (*spec-driven development*) y gestión del contexto para agentes de IA. Su objetivo es evitar la degradación del contexto (*context rot*): el trabajo se divide en fases y tareas atómicas que se ejecutan en instancias nuevas del agente, y la información viaja entre sesiones en ficheros versionados, no en el historial de la conversación.
 
 Cada fase recorre el mismo ciclo y cada paso deja un artefacto escrito que es la fuente de verdad del siguiente:
 
@@ -113,7 +112,7 @@ Evidencias en el repositorio: 12 fases en [`.planning/phases/`](.planning/phases
 | Pieza del proceso | Dónde está | Para qué sirve |
 |---|---|---|
 | Instrucciones para agentes | [`CLAUDE.md`](CLAUDE.md), `.github/instructions/`, `.github/prompts/` | Arquitectura, convenciones y reglas que todo agente debe seguir |
-| Planificación por fases | [`.planning/`](.planning/) · [`TASKS.md`](TASKS.md) | Roadmap, requisitos y estado vivo de cada tarea (método GSD) |
+| Planificación por fases | [`.planning/`](.planning/) · [`TASKS.md`](TASKS.md) | Roadmap, requisitos y estado vivo de cada tarea |
 | Decisiones de arquitectura | [`docs/decisiones/`](docs/decisiones/) | 11 ADRs que justifican cada elección técnica |
 | Registro de errores de la IA | [`docs/ai-mistakes-log.md`](docs/ai-mistakes-log.md) | Fallos detectados en el código generado y reglas derivadas para no repetirlos |
 | Plantillas de prompts | [`docs/ai-prompts/`](docs/ai-prompts/) | Flujos reutilizables para empezar, revisar y cerrar tareas |
@@ -219,7 +218,7 @@ bargain-tfg/
 - Decisiones de arquitectura (ADR-001..011): `docs/decisiones/`
 - API REST: `docs/api/README.md` (OpenAPI en `/api/v1/schema/` con Swagger UI y ReDoc)
 - Estado de tareas: `TASKS.md` · Instrucciones operativas: `CLAUDE.md`
-- Planificación viva (método GSD): `.planning/` · Contexto del proyecto: `memory/`
+- Planificación viva: `.planning/` · Contexto del proyecto: `memory/`
 
 ## 🤝 Diferenciación del Mercado
 
